@@ -19,14 +19,43 @@ export const Form = () => {
     };
 
     const [input, setInput] = useState(initialInput);
-    const [stageList, setStageList] = useState({});
+    const [stageList, setStageList] = useState([]);
+
+    //
+    const [remarkList, setRemarkList] = useState([]);
+    const initialRemarkList = [];
+    const initialStageList = []
+    const rJson = {};
+    let r = "";
 
     useEffect(() => {
         axios.get(categoriStageUrl)
         .then(res => {
-            setStageList(res.data);
+            // setStageList(res.data);
+
+            /*
+            for (let i=0; i<res.data.length; i++) {
+                if (res.data[i].remarks !== r) {
+                    r = res.data[i].remarks;
+                    initialRemarkList.push(r);
+                }
+            }
+            setRemarkList(initialRemarkList);
             // const response = res.data.title;
-            // console.log(response);
+            //console.log(remarkList);
+            */
+
+            for (let i=0; i<res.data.length; i++) {
+                if (res.data[i].remarks !== r) {
+                    if (i !== 0) {
+                        initialStageList.push(rJson[r]);
+                    }
+                    r = res.data[i].remarks;
+                    rJson[r] = [];
+                }
+                rJson[r].push(res.data[i].name);
+            }
+            console.log(initialStageList);
         });
     }, []);
 
@@ -78,11 +107,13 @@ export const Form = () => {
         
         </div>
         {
-        <Select placeholder="関東・甲信越地方">
+        remarkList.map(remark => (
+        <Select placeholder={remark}>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
         </Select>
+        ))
         }
 
         <button

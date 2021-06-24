@@ -53,3 +53,35 @@
   padding-top: 1vh;
   width: 33.33vw;
 }
+
+/*　画面サイズが480px以下はここを読み込む　*/
+@media screen and (max-width:480px){
+.qr {
+    display: none;
+}
+}
+
+/*　画面サイズが480pxからはここを読み込む　*/
+@media screen and (min-width:480px){
+
+.header-bg {
+    position: absolute;
+}
+
+.responsive {
+    display: none;
+}
+
+.qr {
+    margin-top: 40px;
+    margin-left: -10px;
+}
+
+}
+
+
+.posts-index-item {
+  margin: 10px;
+  border-bottom: 1px;
+}
+
