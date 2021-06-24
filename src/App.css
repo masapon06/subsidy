@@ -1,3 +1,4 @@
+/*----------------------default------------------*/
 .App {
   text-align: center;
 }
@@ -35,4 +36,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/*--------------------タブコンポーネント------------------*/
+
+.tab-icon {
+  text-align: center;
+}
+
+.tab-icon text {
+  font-size: 11px;
+}
+
+.tab-icon button {
+  padding-top: 1vh;
+  width: 33.33vw;
 }

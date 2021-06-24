@@ -3,8 +3,9 @@ import axios from 'axios';
 import { GAS_URL } from "../credentials.js";
 import { Select } from "@chakra-ui/react"
 
-export const Form = () => {
+var categoriStageUrl = `https://jirei-seido-api.mirasapo-plus.go.jp/categories/stages`;
 
+export const Form = () => {
     const initialInput = {
         prefecture: "新潟県",
         stage: {
@@ -18,9 +19,20 @@ export const Form = () => {
     };
 
     const [input, setInput] = useState(initialInput);
+    const [stageList, setStageList] = useState({});
+
+    useEffect(() => {
+        axios.get(categoriStageUrl)
+        .then(res => {
+            setStageList(res.data);
+            // const response = res.data.title;
+            // console.log(response);
+        });
+    }, []);
 
     // -----------------------フォームの保存用処理---------------------------
     const saveUserInfo = () => {
+        
         localStorage.setItem("info", JSON.stringify(input)); // localStrageにjsonとして保存
         /*
         axios.post(GAS_URL, {

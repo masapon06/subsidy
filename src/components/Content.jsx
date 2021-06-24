@@ -43,7 +43,7 @@ export const Content = () => {
                     <a>{content.summary}</a>
                 </div>
                 <div>
-                    <a>{content.body}</a>            
+                    <a>{content.body}</a>         
                 </div>
                 <div>
                     <h4>連絡先</h4>

@@ -21,6 +21,13 @@ function App() {
         <Route
           exact
           path="/">
+          <Screen
+          className="responsive"
+          />
+        </Route>
+        <Route
+          exact
+          path="/form">
           <Form
           className="responsive"
           />
