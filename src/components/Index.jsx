@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 export const Index = () => {
     const info = localStorage.getItem("info");
@@ -23,17 +24,19 @@ export const Index = () => {
     }, []);
 
     return (
-      <>
-        <div className="container">
+        <div className="index-container">
             {
                 posts.map(post => (
                 <div className="posts-index-item" >
-                    <a className="post-title">{post}</a> <br></br>                
+                    <a className="post-title">{post}</a> <br></br>     
+                    <div className="post-footer">
+                        <p className="post-letter">経済産業省</p>
+                        <ArrowForwardIcon className="post-icon"></ArrowForwardIcon>
+                    </div>         
                 </div>
                 )
                 )
             }
         </div>
-      </>
     );
 }

@@ -73,13 +73,13 @@ export const Tab = ({
         className="tab-icon"
         >
             {/*MEMO: BottomNavigationActionは, BottomNavigation直下じゃないと動作しないので注意*/}
-            <BottomNavigationAction label="制度一覧" icon={<AssignmentRoundedIcon />} 
+            <BottomNavigationAction label="制度一覧" icon={<AssignmentRoundedIcon />} style={{ color: "#2699FB", backgroundColor: "" }}
             
             />
-            <BottomNavigationAction label="設定" icon={<SettingsRoundedIcon />} 
+            <BottomNavigationAction label="設定" icon={<SettingsRoundedIcon />} style={{ color: "#2699FB", backgroundColor: "" }}
             
             />
-            <BottomNavigationAction label="ご説明" icon={<FavoriteIcon />} 
+            <BottomNavigationAction label="ご説明" icon={<FavoriteIcon />}　style={{ color: "#2699FB", backgroundColor: "" }} 
             
             />
         </BottomNavigation>

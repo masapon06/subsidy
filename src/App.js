@@ -25,10 +25,19 @@ function App() {
           className="responsive"
           />
         </Route>
+        // form
         <Route
           exact
           path="/form">
           <Form
+          className="responsive"
+          />
+        </Route>
+        // root
+        <Route
+          exact
+          path="/content">
+          <Content
           className="responsive"
           />
         </Route>
