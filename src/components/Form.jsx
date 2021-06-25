@@ -17,7 +17,6 @@ import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
 import { Input } from "@material-ui/core";
 
-
 const stageUrl = `https://jirei-seido-api.mirasapo-plus.go.jp/categories/stages`;
 const prefectureUrl = "https://jirei-seido-api.mirasapo-plus.go.jp/prefectures";
 const industryUrl = "https://jirei-seido-api.mirasapo-plus.go.jp/categories/industries";
@@ -144,11 +143,20 @@ export const Form = () => {
             <FormControl className={classes.formControl}>
             <InputLabel htmlFor="grouped-select">事業ステージ</InputLabel>
             <Select defaultValue="" id="grouped-select">
-                <MenuItem value="">
+                <MenuItem 
+                value="">
                 <em>事業ステージ</em>
                 </MenuItem>
-                {stageList.map(name => (
-                    <MenuItem value={name.name}>{name.name}</MenuItem>
+                {stageList.map(stage => (
+                    <MenuItem 
+                    value={stage.name} 
+                    onClick={() => {
+                        setInput({
+                            ...input,
+                            stage: {id: stage.id, name: stage.name}
+                        }); 
+                    }}
+                    >{stage.name}</MenuItem>
                 ))
                 }
             </Select>
@@ -162,7 +170,15 @@ export const Form = () => {
                 <em>業種</em>
                 </MenuItem>
                 {industryList.map(industry => (
-                    <MenuItem value={industry.name}>{industry.name}</MenuItem>
+                    <MenuItem 
+                    value={industry.name}
+                    onClick={() => {
+                        setInput({
+                            ...input,
+                            industry: {id: industry.id, name: industry.name}
+                        }); 
+                    }}
+                    >{industry.name}</MenuItem>
                 ))
                 }
             </Select>
@@ -173,7 +189,7 @@ export const Form = () => {
                 variant="contained"
                 color="primary"
                 className={buttonClasses.button}
-                onClick={(e) => submit(e)}
+                onClick={() => saveUserInfo()}
                 endIcon={<CloudUploadIcon></CloudUploadIcon>}
             >
                 この条件で登録

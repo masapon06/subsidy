@@ -49,9 +49,10 @@ const theme = createMuiTheme({
 /*------------タブコンポーネント----------*/
 export const Tab = ({
     posts,
-    onClickMapTab,
-    onClickClosestTab,
-    onClickLandingTab,
+    onClickFormTab,
+    onClickContentTab,
+    onClickIndexTab,
+    onClickAboutTab,
 }) => {
 
     const [value, setValue] = useState('使い方')
@@ -74,13 +75,13 @@ export const Tab = ({
         >
             {/*MEMO: BottomNavigationActionは, BottomNavigation直下じゃないと動作しないので注意*/}
             <BottomNavigationAction label="制度一覧" icon={<AssignmentRoundedIcon />} style={{ color: "#2699FB", backgroundColor: "" }}
-            
+            onClick={() => onClickIndexTab()}
             />
             <BottomNavigationAction label="設定" icon={<SettingsRoundedIcon />} style={{ color: "#2699FB", backgroundColor: "" }}
-            
+            onClick={() => onClickFormTab()}
             />
             <BottomNavigationAction label="ご説明" icon={<FavoriteIcon />}　style={{ color: "#2699FB", backgroundColor: "" }} 
-            
+            onClick={() => onClickAboutTab(posts)}
             />
         </BottomNavigation>
     </FooterWrapper>
