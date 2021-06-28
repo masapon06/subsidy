@@ -11,30 +11,60 @@ const apiUrl = "https://jirei-seido-api.mirasapo-plus.go.jp/supports?limit=100&s
 
 const initialScreenState = {
   isVisibleForm: false,
-  isVisibleIndex: false,
+  isVisibleIndex: true,
   isVisibleContent: false,
   isVisibleAbout: false,
+  isVisibleContent: false,
 };
 
 export const Screen = () => {
     const [switchScreen, setScreen] = useState(initialScreenState);
+    const [contentId, setContentId] = useState("a")
 
     return (
       <>
         <div className="responsive">
         {switchScreen.isVisibleIndex && 
-        <Index/>
+        <Index
+        contentId = {contentId}
+        onClickPost={
+          () => setScreen({
+            isVisibleForm: false,
+            isVisibleIndex: false,
+            isVisibleContent: false,
+            isVisibleAbout: false,
+            isVisibleContent: true,
+            })
+          }
+        changeContentId = {
+          (id) => setContentId(id)
+        }
+        />
+        }
+        {switchScreen.isVisibleContent && 
+        <Content
+        onClickBackButton={() => setScreen({
+          ...switchScreen,
+          isVisibleForm: false,
+          isVisibleIndex: true,
+          isVisibleContent: false,
+          isVisibleAbout: false,
+          isVisibleContent: false,
+        })
+        }
+        />
         }
         {switchScreen.isVisibleForm && 
         <Form/>
         }
         <Tab
           onClickFormTab={
-            (posts) => setScreen({
+            () => setScreen({
               isVisibleForm: true,
               isVisibleIndex: false,
               isVisibleContent: false,
               isVisibleAbout: false,
+              isVisibleContent: false,
               })
             }
             onClickContentTab={() => setScreen({
@@ -43,6 +73,7 @@ export const Screen = () => {
               isVisibleIndex: false,
               isVisibleContent: true,
               isVisibleAbout: false,
+              isVisibleContent: false,
               })
             }
             onClickIndexTab={() => setScreen({
@@ -51,6 +82,7 @@ export const Screen = () => {
               isVisibleIndex: true,
               isVisibleContent: false,
               isVisibleAbout: false,
+              isVisibleContent: false,
             })
             }
             onClickAboutTab={() => setScreen({
@@ -59,6 +91,7 @@ export const Screen = () => {
               isVisibleIndex: true,
               isVisibleContent: false,
               isVisibleAbout: true,
+              isVisibleContent: false,
             })
             }
         />

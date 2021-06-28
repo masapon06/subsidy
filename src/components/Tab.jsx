@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
 import { createMuiTheme } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
-
 const FooterWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -19,15 +17,12 @@ const FooterWrapper = styled.div`
   bottom: 0;
   background-color: #ffffff;
 `;
-
 const TabWrapper = styled.div`
   width: 33.33vw; 
 `; // TODO: オーバーレイリストボタン実装後50vwに修正
-
 const IconWrappr = styled.div`
     text-align: center;
 `;
-
 /*------------タブのスタイル----------*/
 const theme = createMuiTheme({
     palette: {
@@ -45,7 +40,6 @@ const theme = createMuiTheme({
       width: 500,
     },
   };
-
 /*------------タブコンポーネント----------*/
 export const Tab = ({
     posts,
@@ -54,13 +48,10 @@ export const Tab = ({
     onClickIndexTab,
     onClickAboutTab,
 }) => {
-
     const [value, setValue] = useState('使い方')
-
     const handleChange = () => {
         setValue( {value} );
       }
-
     
     return (
     <>

@@ -185,3 +185,30 @@ body {
   font-size: 20px;
   margin-left: 10px;
 }
+
+/* form */
+.form-header p {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  color: #2699FB;
+}
+
+.form-container {
+ text-align: center;
+ padding-top: 40px;
+}
+
+.form-footer {
+  text-align: center;
+}
+
+#grouped-select {
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+#btn {
+  margin-top: 30%;
+  font-size: 20px;
+}
