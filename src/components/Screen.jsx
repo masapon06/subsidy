@@ -26,7 +26,6 @@ export const Screen = () => {
         <div className="responsive">
         {switchScreen.isVisibleIndex && 
         <Index
-        contentId = {contentId}
         onClickPost={
           () => setScreen({
             isVisibleForm: false,
@@ -37,12 +36,13 @@ export const Screen = () => {
             })
           }
         changeContentId = {
-          (id) => setContentId(id)
+          (id) => {setContentId(id); console.log(contentId);}
         }
         />
         }
         {switchScreen.isVisibleContent && 
         <Content
+        contentId = {contentId}
         onClickBackButton={() => setScreen({
           ...switchScreen,
           isVisibleForm: false,

@@ -14,31 +14,37 @@ import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
 import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
 import { Input } from "@material-ui/core";
-
 const stageUrl = `https://jirei-seido-api.mirasapo-plus.go.jp/categories/stages`;
 const prefectureUrl = "https://jirei-seido-api.mirasapo-plus.go.jp/prefectures";
 const industryUrl = "https://jirei-seido-api.mirasapo-plus.go.jp/categories/industries";
-
 const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
     },
   }));
-  
 const useButtonStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
     },
   }));
 // ------------------フォームコンポーネント----------------
-export const Form = () => {
-    const info = localStorage.getItem("info");
-    const localInput = info ? JSON.parse(info) : console.log("error: localstrage is null");
+export const Setting = () => {
+    const initialInput = {
+        prefecture: "新潟県",
+        stage: {
+            id: "1",
+            name: "事業計画",
+        },
+        industry: {
+            id: "1",
+            name: "農業",
+        },
+    };
     
     const classes = useStyles();
     const buttonClasses = useButtonStyles();
-    const [input, setInput] = useState(localInput);
+    const [input, setInput] = useState(initialInput);
     const initialStageList = [];
     const [stageList, setStageList] = useState([]);
     const initialPrefectureList = [];
@@ -86,19 +92,16 @@ export const Form = () => {
     // --------------------------レンダリング----------------------------
     return(
         <>
-        <div>
-        <br/>
-        </div>
         <div className="form-header">
-            <p>設定</p>
+            <p>初期設定</p>
         </div>
         <div className="form-container">
             <div>
                 <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="grouped-select">{`会社の地域 (現在: ${localInput.prefecture})`}</InputLabel>
+                <InputLabel htmlFor="grouped-select">会社の地域</InputLabel>
                 <Select defaultValue="" id="grouped-select">
                     <MenuItem value="">
-                    <em>{input.prefecture}</em>
+                    <em>会社の地域</em>
                     </MenuItem>
                     {prefectureList.map(prefecture => (
                         <MenuItem
@@ -117,11 +120,11 @@ export const Form = () => {
             </div>
             <div>
                 <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="grouped-select">{`事業ステージ (現在: ${localInput.stage.name})`}</InputLabel>
+                <InputLabel htmlFor="grouped-select">事業ステージ</InputLabel>
                 <Select defaultValue="" id="grouped-select">
                     <MenuItem 
                     value="">
-                    <em>{input.stage.name}</em>
+                    <em>事業ステージ</em>
                     </MenuItem>
                     {stageList.map(stage => (
                         <MenuItem 
@@ -140,10 +143,10 @@ export const Form = () => {
             </div>
             <div>
                 <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="grouped-select">{`会社の地域 (現在: ${localInput.industry.name})`}</InputLabel>
+                <InputLabel htmlFor="grouped-select">業種</InputLabel>
                 <Select defaultValue="" id="grouped-select">
                     <MenuItem value="">
-                    <em>{input.industry.name}</em>
+                    <em>業種</em>
                     </MenuItem>
                     {industryList.map(industry => (
                         <MenuItem 
@@ -169,9 +172,8 @@ export const Form = () => {
                     className={buttonClasses.button}
                     id="btn"
                     onClick={() => saveUserInfo()}
-                    endIcon={<CloudUploadIcon></CloudUploadIcon>}
                 >
-                    条件を変更
+                    この条件で登録
                 </Button>
             </div>
         </div>
@@ -179,4 +181,3 @@ export const Form = () => {
         </>
     )
 }
-

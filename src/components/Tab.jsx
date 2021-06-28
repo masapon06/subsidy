@@ -18,7 +18,7 @@ const FooterWrapper = styled.div`
   background-color: #ffffff;
 `;
 const TabWrapper = styled.div`
-  width: 33.33vw; 
+  width: 50vw; 
 `; // TODO: オーバーレイリストボタン実装後50vwに修正
 const IconWrappr = styled.div`
     text-align: center;
@@ -71,9 +71,11 @@ export const Tab = ({
             <BottomNavigationAction label="設定" icon={<SettingsRoundedIcon />} style={{ color: "#2699FB", backgroundColor: "" }}
             onClick={() => onClickFormTab()}
             />
+            {/*
             <BottomNavigationAction label="ご説明" icon={<FavoriteIcon />}　style={{ color: "#2699FB", backgroundColor: "" }} 
             onClick={() => onClickAboutTab(posts)}
             />
+            */}
         </BottomNavigation>
     </FooterWrapper>
     </>

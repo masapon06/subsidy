@@ -3,10 +3,12 @@ import axios from 'axios';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PublicIcon from '@material-ui/icons/Public';
 
-const contentUrl = "https://jirei-seido-api.mirasapo-plus.go.jp/supports/259"; // 新創業融資制度
-
-export const Content = () => {
+export const Content = ({
+    contentId,
+    onClickBackButton,
+}) => {
     const [content, setContent] = useState({})
+    const contentUrl = `https://jirei-seido-api.mirasapo-plus.go.jp/supports/${contentId}`;
 
     const initialContent = {
         "title": "",
@@ -35,8 +37,11 @@ export const Content = () => {
 
       <div className="content">
           <div className="content-header">
-          <ArrowBackIcon className="post-icon-1"></ArrowBackIcon>
-          <p>POST</p>
+          <ArrowBackIcon 
+          className="post-icon-1"
+          onClick = {() => onClickBackButton()}
+          ></ArrowBackIcon>
+          <p>制度詳細</p>
           </div>
           <div className="content-detail">
             <h2>{content.title}</h2>
